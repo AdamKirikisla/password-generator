@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password generator
+    </title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Random password generator
+        </h1>
+        <p>Create a strong secure password</p>
+    </header>
+
+    <main>
+        <p id="password">password</p>
+        <button>Copy</button>
+
+
+
+        <form action="">
+
+            <div>
+                <label for="passLen">Password length:</label>
+                <input type="range" min="1" max="32" step="1" value="8" id="passLen">
+                <p id="pLen">Length</p>
+            </div>
+
+
+
+            <div class="checkbox">
+                <p>Characters used:</p>
+                <label>
+                    <input type="checkbox" name="charTypes" value="uppercase" checked id="uppercase">
+                    <p>Uppercase (A-Z)</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="charTypes" value="lowercase" checked id="lowercase">
+                    <p>Lowercase (a-z)</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="charTypes" value="numbers" checked id="numbers">
+                    <p>Numbers (0-9)</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="charTypes" value="symbols" id="symbols">
+                    <p>Symbols (#$&)</p>
+                </label>
+            </div>
+
+            <div class="strength">
+                <p>Strength [] [] [] []</p>
+
+            </div>
+            <button type="submit">Generate</button>
+
+        </form>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
