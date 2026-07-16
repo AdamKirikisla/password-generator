@@ -1,5 +1,7 @@
 const form = document.querySelector('form');
 
+// Copy Button
+let currentPassword = '';
 
 
 //Range Logic
@@ -47,18 +49,24 @@ form.addEventListener('submit', e => {
     // Add Options to an Array
     const checkboxArr = [];
 
+    let points = range; // For Score
+
     //Checkbox Checked 
     if (box1.checked) {
         checkboxArr.push(...uppercase);
+        points++;
     }
     if (box2.checked) {
         checkboxArr.push(...lowercase);
+        points++;
     }
     if (box3.checked) {
         checkboxArr.push(...numbers);
+        points++;
     }
     if (box4.checked) {
         checkboxArr.push(...symbols);
+        points++;
     }
 
 
@@ -80,10 +88,44 @@ form.addEventListener('submit', e => {
     test(range); // Call function
     const passwordString = passwordArrayString.join(''); //turn array of characters into one string
 
+    currentPassword = passwordString; // save the raw string for the copy button
+
     // Password Display
     const password = document.querySelector('#password');
     password.textContent = 'Password: ' + passwordString;
 
+    // Common scoring factors
+    let strength = document.querySelector('#strengthText');
+
+    if (passwordString === '') {
+        strength.textContent = 'Password nonexistant';
+    }
+    else if (points < 8) {
+        strength.textContent = 'weak';
+    }
+
+    else if (points > 8 && points < 12) {
+        strength.textContent = 'good';
+    }
+
+    else if (points >= 12) {
+        strength.textContent = 'strong';
+    }
 
 
-})
+
+
+}) // forms ends
+
+// Copy Button Logic 
+const copyBtn = document.querySelector('#copyBtn');
+copyBtn.addEventListener('click', () => {
+    if (currentPassword === '') return; // nothing to copy yet
+
+    navigator.clipboard.writeText(currentPassword).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+        }, 1500);
+    });
+});
