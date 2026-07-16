@@ -92,23 +92,31 @@ form.addEventListener('submit', e => {
 
     // Password Display
     const password = document.querySelector('#password');
-    password.textContent = 'Password: ' + passwordString;
+    password.textContent = passwordString;
 
     // Common scoring factors
     let strength = document.querySelector('#strengthText');
 
-    if (passwordString === '') {
-        strength.textContent = 'Password nonexistant';
+    if (checkboxArr.length === 0) {
+        strength.textContent = 'Select at least one option';
+        password.textContent = '';
+        return; // stop here, don't try to generate anything
     }
     else if (points < 8) {
+        strength.className = ''; // clear previous state
+        strength.classList.add('strength-weak');
         strength.textContent = 'weak';
     }
 
-    else if (points > 8 && points < 12) {
+    else if (points >= 8 && points < 12) {
+        strength.className = '';
+        strength.classList.add('strength-medium');
         strength.textContent = 'good';
     }
 
     else if (points >= 12) {
+        strength.className = '';
+        strength.classList.add('strength-strong');
         strength.textContent = 'strong';
     }
 

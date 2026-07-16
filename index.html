@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random password generator
     </title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -13,52 +19,59 @@
     <header>
         <h1>Random password generator
         </h1>
-        <p>Create a strong secure password</p>
+
     </header>
 
     <main>
-        <p id="password"></p>
-        <button id="copyBtn">Copy</button>
+
+        <div class="display">
+            <p id="password">Generate Password</p>
+            <button id="copyBtn">Copy</button>
+        </div>
+
 
 
         <form action="">
 
-            <div>
+            <div class="length">
                 <label for="passLen">Password length:</label>
                 <input type="range" min="1" max="32" step="1" value="8" id="passLen">
-                <p id="pLen">Length</p>
+                <p id="pLen">8</p>
             </div>
 
 
 
-            <div class="checkbox">
+            <div class="checkboxContainer">
                 <p>Characters used:</p>
-                <label>
-                    <input type="checkbox" name="charTypes" value="uppercase" checked id="uppercase">
-                    <p>Uppercase (A-Z)</p>
-                </label>
 
-                <label>
-                    <input type="checkbox" name="charTypes" value="lowercase" checked id="lowercase">
-                    <p>Lowercase (a-z)</p>
-                </label>
+                <div class="checkbox"><label>
+                        <input type="checkbox" name="charTypes" value="uppercase" checked id="uppercase">
+                        <p>(A-Z)</p>
+                    </label>
 
-                <label>
-                    <input type="checkbox" name="charTypes" value="numbers" checked id="numbers">
-                    <p>Numbers (0-9)</p>
-                </label>
+                    <label>
+                        <input type="checkbox" name="charTypes" value="lowercase" checked id="lowercase">
+                        <p>(a-z)</p>
+                    </label>
 
-                <label>
-                    <input type="checkbox" name="charTypes" value="symbols" id="symbols">
-                    <p>Symbols (#$&)</p>
-                </label>
+                    <label>
+                        <input type="checkbox" name="charTypes" value="numbers" checked id="numbers">
+                        <p>(0-9)</p>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="charTypes" value="symbols" id="symbols">
+                        <p>(#$&)</p>
+                    </label>
+                </div>
+
             </div>
 
             <div class="strength">
-                <p id="strengthText">Strength [] [] [] []</p>
+                <p id="strengthText"></p>
 
             </div>
-            <button type="submit">Generate</button>
+            <button type="submit" id="submit">Generate</button>
 
         </form>
     </main>
